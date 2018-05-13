@@ -2,12 +2,11 @@
   <div id="toner">
     <p>results: {{results}}</p>
     <div class="container">
-      <Column v-for="n in depth"
-        :key="n"
-        :index="n-1"
-        :colSelectedId.sync="results[n-1]"
-        @colupdate="tonerUpdate(n-1, $event)"
-        :breadth="breadth"/>
+      <div v-for="m in range(0, depth)" :key="m">
+        <div  v-for="n in range(0, breadth)" :key="n"
+                :class="{ circle: true, selected: isSelected(m, n) }"
+                @click="tonerUpdate(m, n)"/>
+      </div>
     </div>
     <button @click="clear">Clear</button>
   </div>
@@ -15,7 +14,6 @@
 
 <script>
 import Vue from 'vue';
-import Column from './Column';
 
 export default {
   name: 'Toner',
@@ -25,7 +23,6 @@ export default {
       results: new Array(this.depth).fill(Math.floor(this.breadth / 2)),
     };
   },
-  components: { Column },
   methods: {
     clear() {
       const init = Math.floor(this.breadth / 2);
@@ -33,8 +30,14 @@ export default {
         Vue.set(this.results, i, init);
       }
     },
+    isSelected(m, n) {
+      return n === this.results[m];
+    },
     tonerUpdate(m, n) {
       Vue.set(this.results, m, n);
+    },
+    range(start, end) {
+      return Array.from(new Array(end - start), (_, i) => i + start);
     },
   },
 };
@@ -61,4 +64,17 @@ export default {
   height: var(--full-height);
   z-index: 2;
 }
+
+.circle {
+  margin: var(--diameter) var(--radius) var(--diameter) var(--radius);
+  width: var(--diameter);
+  height: var(--diameter);
+  border-radius: var(--radius);
+  background: black;
+}
+
+.selected {
+  background: red;
+}
+
 </style>
