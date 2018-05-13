@@ -32,11 +32,9 @@ export default {
       for (let i = 0; i < this.depth; i += 1) {
         Vue.set(this.results, i, init);
       }
-      console.log(this.results);
     },
     tonerUpdate(m, n) {
       Vue.set(this.results, m, n);
-      console.log(this.results);
     },
   },
 };

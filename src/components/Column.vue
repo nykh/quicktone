@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="column">
-    <p>{{colSelectedId}}</p>
     <div  v-for="n in breadth"
             :key="n-1"
             :index="n-1"
@@ -13,15 +12,12 @@
 export default {
   name: 'Column',
   props: ['index', 'breadth', 'colSelectedId'],
-  data() {
-    return {
-      selectedId: this.colSelectedId,
-    };
-  },
-  watch: {
-    selectedId(newval) {
-      console.log('triggered');
-      this.$emit('colupdate', newval);
+  computed: {
+    selectedId: {
+      get() { return this.colSelectedId; },
+      set(val) {
+        this.$emit('colupdate', val);
+      },
     },
   },
   methods: {
