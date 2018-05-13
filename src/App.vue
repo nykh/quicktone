@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <Toner :depth="4" :breadth="5" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Toner from './components/Toner';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    Toner,
   },
 };
 </script>
