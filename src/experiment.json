@@ -1,7 +1,7 @@
 {
-  "numTests": 3,
+  "numTests": 1,
   "length": 4,
   "width": 5,
 
-  "debug": true
+  "post_url": "http://ec2-18-219-254-163.us-east-2.compute.amazonaws.com/"
 }
