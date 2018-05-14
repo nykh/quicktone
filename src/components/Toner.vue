@@ -1,14 +1,17 @@
 <template lang="html">
   <div id="toner">
-    <p>results: {{results}}</p>
-    <div class="container">
-      <div v-for="m in range(0, depth)" :key="m">
-        <div  v-for="n in range(0, breadth)" :key="n"
-                :class="{ circle: true, selected: isSelected(m, n) }"
-                @click="tonerUpdate(m, n)"/>
+    <div class="meta">
+      <div class="container">
+        <div v-for="m in range(0, depth)" :key="m">
+          <div  v-for="n in range(0, breadth)" :key="n"
+          :class="{ circle: true, selected: isSelected(m, n) }"
+          @click="tonerUpdate(m, n)"/>
+        </div>
       </div>
     </div>
+    <p>results: {{results}}</p>
     <button @click="clear">Clear</button>
+    <button @click="submit">Submit</button>
   </div>
 </template>
 
@@ -19,8 +22,9 @@ export default {
   name: 'Toner',
   props: ['depth', 'breadth'],
   data() {
+    const init = Math.floor(this.breadth / 2);
     return {
-      results: new Array(this.depth).fill(Math.floor(this.breadth / 2)),
+      results: new Array(this.depth).fill(init),
     };
   },
   methods: {
@@ -29,6 +33,10 @@ export default {
       for (let i = 0; i < this.depth; i += 1) {
         Vue.set(this.results, i, init);
       }
+    },
+    submit() {
+      this.clear();
+      this.$emit('next');
     },
     isSelected(m, n) {
       return n === this.results[m];
@@ -54,9 +62,19 @@ export default {
   --full-height: calc((2 * var(--dim-n) + 1) * var(--diameter));
 }
 
+#toner {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.meta {
+  width: var(--full-width);
+  height: var(--full-height);
+  margin: 0 auto;
+}
+
 .container {
   position: absolute;
-  left: 0; right: 0;
   display: flex;
   flex: auto;
   flex-direction: row;
