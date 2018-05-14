@@ -52,7 +52,7 @@ export default {
       }
     },
     submit() {
-      axios.post(Config.post_url, { body: 1 })
+      axios.post(Config.post_url, { data: this.results })
         .then(() => {})
         .catch((e) => { this.errors.push(e); });
     },
