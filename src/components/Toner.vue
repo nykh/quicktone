@@ -1,13 +1,15 @@
 <template lang="html">
   <div id="toner">
     <div class="meta">
-      <div class="container">
-        <div v-for="m in range(0, depth)" :key="m">
-          <div  v-for="n in range(0, breadth)" :key="n"
+      <svg class="container" ref="svgcanvas"
+           :width="2 * r + (depth - 1) * xgap" :height="2 * r + (breadth - 1) * ygap">
+        <g v-for="m in range(0, depth)" :key="m">
+          <circle  v-for="n in range(0, breadth)" :key="n"
           :class="{ circle: true, selected: isSelected(m, n) }"
+          :r="r" :cx="r + m * xgap" :cy="r + n * ygap"
           @click="tonerUpdate(m, n)"/>
-        </div>
-      </div>
+        </g>
+      </svg>
     </div>
     <p>results: {{results}}</p>
     <button @click="clear">Clear</button>
@@ -21,6 +23,11 @@ import Vue from 'vue';
 export default {
   name: 'Toner',
   props: ['depth', 'breadth'],
+  created() {
+    this.r = 10;
+    this.xgap = 70;
+    this.ygap = 50;
+  },
   data() {
     const init = Math.floor(this.breadth / 2);
     return {
@@ -52,47 +59,19 @@ export default {
 </script>
 
 <style>
-* {
-  --dim-m: 4;
-  --dim-n: 5;
-  --radius: 10px;
-  --diameter: calc(var(--radius) * 2);
-  --col-width: calc(var(--diameter) * 2);
-  --full-width: calc(var(--col-width) * var(--dim-m));
-  --full-height: calc((2 * var(--dim-n) + 1) * var(--diameter));
-}
-
-#toner {
-  width: 50%;
-  margin: 0 auto;
-}
-
-.meta {
-  width: var(--full-width);
-  height: var(--full-height);
-  margin: 0 auto;
-}
-
 .container {
-  position: absolute;
-  display: flex;
-  flex: auto;
-  flex-direction: row;
-  width: var(--full-width);
-  height: var(--full-height);
-  z-index: 2;
+  margin: 10px;
 }
 
-.circle {
-  margin: var(--diameter) var(--radius) var(--diameter) var(--radius);
-  width: var(--diameter);
-  height: var(--diameter);
-  border-radius: var(--radius);
-  background: black;
+.container .circle {
+  fill: black;
 }
 
-.selected {
-  background: red;
+.container .circle:hover {
+  fill: yellow;
 }
 
+.container .selected {
+  fill: red;
+}
 </style>
