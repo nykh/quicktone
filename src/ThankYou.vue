@@ -2,7 +2,7 @@
   <div id="app">
     <h1>QuickTone!</h1>
     <p>Thank you for participating in this study!</p>
-    <p><a href="/">Start another test</a></p>
+    <p><router-link to="/">Start another test</router-link></p>
   </div>
 </template>
 

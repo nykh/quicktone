@@ -54,7 +54,7 @@ export default {
     submit() {
       axios.post(Config.post_url, { data: this.results })
         .then(() => {
-          window.location.href = '/thankyou';
+          this.$router.push('/thankyou');
         })
         .catch((e) => {
           this.errors.push(e);
