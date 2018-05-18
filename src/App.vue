@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Welcome to QuickTone!</h1>
+    <h1>QuickTone!</h1>
     <audio type="audio/mpeg" :src="sound_file" controls="controls">
       Your browser does not support the <code>audio</code> element.
     </audio>
@@ -53,8 +53,12 @@ export default {
     },
     submit() {
       axios.post(Config.post_url, { data: this.results })
-        .then(() => {})
-        .catch((e) => { this.errors.push(e); });
+        .then(() => {
+          window.location.href = '/thankyou';
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
     },
     leftpad(_str, _len, _ch) {
       let str = String(_str);
