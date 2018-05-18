@@ -3,11 +3,14 @@
     <div class="meta">
       <svg class="container" ref="svgcanvas"
            :width="2 * r + (depth - 1) * xgap" :height="2 * r + (breadth - 1) * ygap">
-        <g v-for="m in range(0, depth)" :key="m">
-          <circle  v-for="n in range(0, breadth)" :key="n"
-          :class="{ circle: true, selected: isSelected(m, n) }"
-          :r="r" :cx="r + m * xgap" :cy="r + n * ygap"
-          @click="tonerUpdate(m, n)"/>
+        <line v-for="m in range(0, depth - 1)" :key="'line' + m"
+              class="connector" :x1="r + m * xgap" :x2="r + (m + 1) * xgap"
+              :y1="r + results[m] * ygap" :y2="r + results[m+1] * ygap"/>
+        <g v-for="m in range(0, depth)" :key="'g' + m">
+          <circle  v-for="n in range(0, breadth)" :key="'c' + n"
+            :class="{ circle: true, selected: isSelected(m, n) }"
+            :r="r" :cx="r + m * xgap" :cy="r + n * ygap"
+            @click="tonerUpdate(m, n)"/>
         </g>
       </svg>
     </div>
@@ -61,6 +64,11 @@ export default {
 <style>
 .container {
   margin: 10px;
+}
+
+.container .connector {
+  stroke: black;
+  stroke-width: 4;
 }
 
 .container .circle {
