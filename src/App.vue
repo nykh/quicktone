@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     next_or_submit(result) {
-      this.results.push(result.slice());
+      this.results.push(result);
       if (this.test_id + 1 >= this.numTests) {
         this.submit();
       } else {

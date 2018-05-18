@@ -45,8 +45,8 @@ export default {
       }
     },
     submit() {
+      this.$emit('next', this.results.slice());
       this.clear();
-      this.$emit('next', this.results);
     },
     isSelected(m, n) {
       return n === this.results[m];
