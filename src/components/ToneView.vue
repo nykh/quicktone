@@ -5,12 +5,12 @@
       :width="(2 * xorigin) + ((len - 1) * xgap)"
       :height="(2 * yorigin) + ((ydim - 1) * ygap)">
       <g v-for="i in range(0, compareLines.length)" :key="'g' + i">
-        <path :d="comparepaths[i]" :stroke="colors[i]" opacity="0.2"/>
+        <path :d="comparepaths[i]" :stroke="colors[i]" opacity="0.2" fill="none"/>
         <circle v-for="j in range(0, len)" :key="'cp' + i + ',' + j"
                 :fill="colors[i]" :r="r" opacity="0.2"
                 :cx="comparepts[i][0][j]" :cy="comparepts[i][1][j]" />
       </g>
-      <path :d="mainpath" stroke="black"/>
+      <path :d="mainpath" stroke="black" fill="none"/>
       <circle v-for="i in range(0, len)" :key="'mp' + i"
               fill="black" :r="r"
               :cx="mainpts[0][i]" :cy="mainpts[1][i]" />
