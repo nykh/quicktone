@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <h1>QuickTone!</h1>
     <h2>Test {{test_id}}</h2>
     <p>Please listen to the audio below and draw the line representing
       what you think the tone you heard is.</p>
@@ -19,8 +18,8 @@
 
 <script>
 import axios from 'axios';
-import Toner from './components/Toner';
-import Config from './experiment.json';
+import Toner from './Toner';
+import Config from '../experiment.json';
 
 export default {
   name: 'App',
@@ -42,7 +41,7 @@ export default {
       const num = this.leftpad(String(this.test_id), 3, '0');
 
       // eslint-disable-next-line
-      return require(`./assets/${num}.mp3`);
+      return require(`../assets/${num}.mp3`);
     },
   },
   methods: {
@@ -81,17 +80,6 @@ export default {
 </script>
 
 <style>
-@import 'assets/fonts/index.css';
-
-#app {
-  font-family: 'Roboto Mono', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 1rem;
-}
-
 #app p {
   margin: auto;
   margin-top: 1rem;
