@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <h1>QuickTone!</h1>
+    <h2>Test {{test_id}}</h2>
+    <p>Please listen to the audio below and draw the line representing
+      what you think the tone you heard is.</p>
     <audio type="audio/mpeg" :src="sound_file" controls="controls">
       Your browser does not support the <code>audio</code> element.
     </audio>
@@ -29,14 +32,14 @@ export default {
       numTests: Config.numTests,
       depth: Config.length,
       breadth: Config.width,
-      test_id: 0,
+      test_id: 1,
       results: [],
       errors: [],
     };
   },
   computed: {
     sound_file() {
-      const num = this.leftpad(String(this.test_id + 1), 3, '0');
+      const num = this.leftpad(String(this.test_id), 3, '0');
 
       // eslint-disable-next-line
       return require(`./assets/${num}.mp3`);
@@ -45,7 +48,7 @@ export default {
   methods: {
     next_or_submit(result) {
       this.results.push(result);
-      if (this.test_id + 1 >= this.numTests) {
+      if (this.test_id >= this.numTests) {
         this.submit();
       } else {
         this.test_id += 1;
@@ -78,13 +81,22 @@ export default {
 </script>
 
 <style>
+@import 'assets/fonts/index.css';
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 1rem;
+}
+
+#app p {
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 60%;
 }
 
 #app Toner {

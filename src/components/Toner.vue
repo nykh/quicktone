@@ -14,7 +14,6 @@
         </g>
       </svg>
     </div>
-    <p>results: {{results}}</p>
     <button @click="clear">Clear</button>
     <button @click="submit">Submit</button>
   </div>
