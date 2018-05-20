@@ -5,7 +5,7 @@
     <p>{{store.results}}</p>
     <p>{{store.response}}</p>
     <ToneView v-for="i in range(0, store.results.length)"
-      :key="'test' + i" :title="'Test ' + i"
+      :key="'test' + i" :title="'Test ' + (i+1)"
       :mainLine="store.results[i]" :compareLines="store.response[i]"></ToneView>
   </div>
 </template>

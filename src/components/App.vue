@@ -42,7 +42,7 @@ export default {
       const num = this.leftpad(String(this.test_id), 3, '0');
 
       // eslint-disable-next-line
-      return require(`../assets/${num}.mp3`);
+      return require(`../assets/${num}.wav`);
     },
   },
   methods: {
