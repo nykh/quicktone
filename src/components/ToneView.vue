@@ -5,9 +5,10 @@
       :width="(2 * xorigin) + ((len - 1) * xgap)"
       :height="(2 * yorigin) + ((ydim - 1) * ygap)">
       <g v-for="i in range(0, compareLines.length)" :key="'g' + i">
-        <path :d="comparepaths[i]" :stroke="colors[i]" opacity="0.2" fill="none"/>
+        <path :d="comparepaths[i]" :stroke="colors[i]"
+              :opacity="compare_line_opacity" fill="none"/>
         <circle v-for="j in range(0, len)" :key="'cp' + i + ',' + j"
-                :fill="colors[i]" :r="r" opacity="0.2"
+                :fill="colors[i]" :r="r" :opacity="compare_line_opacity"
                 :cx="comparepts[i][0][j]" :cy="comparepts[i][1][j]" />
       </g>
       <path :d="mainpath" stroke="black" fill="none"/>
@@ -31,6 +32,7 @@ export default {
     this.xgap = 40;
     this.ygap = 25;
     this.colors = ['green', 'red', 'blue'];
+    this.compare_line_opacity = 0.5;
   },
   computed: {
     mainpts() {
