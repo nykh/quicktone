@@ -2,11 +2,12 @@
   <div id="app">
     <p>Thank you for participating in this study!</p>
     <p><router-link to="/">Start another test</router-link></p>
-    <p>{{store.results}}</p>
-    <p>{{store.response}}</p>
-    <ToneView v-for="i in range(0, store.results.length)"
+    <h2>Results</h2>
+    <div class="results">
+      <ToneView class="toneview" v-for="i in range(0, store.results.length)"
       :key="'test' + i" :title="'Test ' + (i+1)"
       :mainLine="store.results[i]" :compareLines="store.response[i]"></ToneView>
+    </div>
   </div>
 </template>
 
@@ -28,4 +29,14 @@ export default {
 </script>
 
 <style lang="css">
+.results {
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
+  width: 40%;
+}
+
+.results > .toneview {
+  flex: 1;
+}
 </style>
