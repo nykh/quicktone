@@ -13,12 +13,17 @@ import ThankYou from './components/ThankYou';
 
 Vue.use(VueRouter);
 
+const store = {
+  results: [],
+  response: [],
+};
+
 export default {
   name: 'Routing',
   router: new VueRouter({
     routes: [
-      { path: '/', component: App },
-      { path: '/thankyou', component: ThankYou },
+      { path: '/', component: App, props: { store } },
+      { path: '/thankyou', component: ThankYou, props: { store } },
     ],
   }),
 };

@@ -23,6 +23,7 @@ import Config from '../experiment.json';
 
 export default {
   name: 'App',
+  props: ['store'],
   components: {
     Toner,
   },
@@ -55,7 +56,9 @@ export default {
     },
     submit() {
       axios.post(Config.post_url, { data: this.results })
-        .then(() => {
+        .then((res) => {
+          this.store.results = this.results;
+          this.store.response = res.data.data;
           this.$router.push('/thankyou');
         })
         .catch((e) => {
