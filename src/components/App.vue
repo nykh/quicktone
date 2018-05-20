@@ -55,15 +55,16 @@ export default {
       }
     },
     submit() {
-      axios.post(Config.post_url, { data: this.results })
-        .then((res) => {
-          this.store.results = this.results;
-          this.store.response = res.data.data;
-          this.$router.push('/thankyou');
-        })
-        .catch((e) => {
-          this.errors.push(e);
-        });
+      axios.post(Config.post_url, {
+        data: this.results,
+        questionaire: this.store.questionaire,
+      }).then((res) => {
+        this.store.results = this.results;
+        this.store.response = res.data.data;
+        this.$router.push('/thankyou');
+      }).catch((e) => {
+        this.errors.push(e);
+      });
     },
     leftpad(_str, _len, _ch) {
       let str = String(_str);

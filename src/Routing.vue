@@ -8,6 +8,7 @@
 <script>
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Questionaire from './components/Questionaire';
 import App from './components/App';
 import ThankYou from './components/ThankYou';
 
@@ -16,13 +17,15 @@ Vue.use(VueRouter);
 const store = {
   results: [],
   response: [],
+  questionaire: {},
 };
 
 export default {
   name: 'Routing',
   router: new VueRouter({
     routes: [
-      { path: '/', component: App, props: { store } },
+      { path: '/', component: Questionaire, props: { store } },
+      { path: '/tests', component: App, props: { store } },
       { path: '/thankyou', component: ThankYou, props: { store } },
     ],
   }),
