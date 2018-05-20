@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h2>Test {{test_id}}</h2>
+    <h2>Test {{test_id}}/{{numTests}}</h2>
     <p>Please listen to the audio below and draw the line representing
       what you think the tone you heard is.</p>
     <audio type="audio/mpeg" :src="sound_file" controls="controls">
