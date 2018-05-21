@@ -1,5 +1,5 @@
 <template lang="html">
-  <div id="toner">
+  <div>
     <div class="meta">
       <svg class="container" ref="svgcanvas"
            :width="2 * r + (depth - 1) * xgap" :height="2 * r + (breadth - 1) * ygap">
@@ -13,6 +13,7 @@
             @click="tonerUpdate(m, n)"/>
         </g>
       </svg>
+      <hr>
     </div>
     <button class="clear" @click="clear">Clear</button>
     <button class="submit" @click="submit">Submit</button>
@@ -61,6 +62,11 @@ export default {
 </script>
 
 <style>
+.meta {
+  margin: auto;
+  max-width: 50%;
+}
+
 .container {
   margin: 10px;
 }

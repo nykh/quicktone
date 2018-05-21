@@ -42,7 +42,7 @@ export default {
       const num = this.leftpad(String(this.test_id), 3, '0');
 
       // eslint-disable-next-line
-      return require(`../assets/${num}.wav`);
+      return require(`../assets/sounds/${num}.wav`);
     },
   },
   methods: {
@@ -88,7 +88,7 @@ export default {
   margin: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width: 60%;
+  width: 50%;
 }
 
 #app Toner {
