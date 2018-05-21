@@ -14,8 +14,8 @@
         </g>
       </svg>
     </div>
-    <button @click="clear">Clear</button>
-    <button @click="submit">Submit</button>
+    <button class="clear" @click="clear">Clear</button>
+    <button class="submit" @click="submit">Submit</button>
   </div>
 </template>
 
@@ -80,5 +80,10 @@ export default {
 
 .container .selected {
   fill: red;
+}
+
+button.clear {
+  color: black;
+  background-color: #b0b0b0;
 }
 </style>

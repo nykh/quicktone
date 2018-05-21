@@ -43,4 +43,10 @@ export default {
   color: #2c3e50;
   margin-top: 1rem;
 }
+
+button {
+  min-width: 5rem;
+  color: #715b09;
+  background-color: #eec223;
+}
 </style>
