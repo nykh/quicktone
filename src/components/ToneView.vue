@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { range } from '../assets/js/utils';
+
 export default {
   name: 'ToneView',
   props: ['title', 'mainLine', 'compareLines'],
@@ -50,7 +52,7 @@ export default {
   },
   methods: {
     toCoord(points) {
-      return [this.range(0, points.length).map(x => (x * this.xgap) + this.xorigin),
+      return [range(0, points.length).map(x => (x * this.xgap) + this.xorigin),
         points.map(y => (y * this.ygap) + this.yorigin)];
     },
     makePath(coords) {
@@ -61,9 +63,6 @@ export default {
         s += ` L${xs[i]} ${ys[i]}`;
       }
       return s;
-    },
-    range(start, end) {
-      return Array.from(new Array(end - start), (_, i) => i + start);
     },
   },
 };

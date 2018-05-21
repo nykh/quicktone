@@ -20,6 +20,7 @@
 import axios from 'axios';
 import Toner from './Toner';
 import Config from '../experiment.json';
+import { leftpad } from '../assets/js/utils';
 
 export default {
   name: 'App',
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     sound_file() {
-      const num = this.leftpad(String(this.test_id), 3, '0');
+      const num = leftpad(String(this.test_id), 3, '0');
 
       // eslint-disable-next-line
       return require(`../assets/sounds/${num}.wav`);
@@ -65,19 +66,6 @@ export default {
       }).catch((e) => {
         this.errors.push(e);
       });
-    },
-    leftpad(_str, _len, _ch) {
-      let str = String(_str);
-      let i = 0;
-      let len = _len;
-      let ch = _ch;
-      if (!ch && ch !== 0) ch = ' ';
-      len -= str.length;
-      while (i < len) {
-        str = ch + str;
-        i += 1;
-      }
-      return str;
     },
   },
 };

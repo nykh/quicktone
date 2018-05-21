@@ -22,6 +22,7 @@
 
 <script>
 import Vue from 'vue';
+import { range } from '../assets/js/utils';
 
 export default {
   name: 'Toner',
@@ -54,9 +55,7 @@ export default {
     tonerUpdate(m, n) {
       Vue.set(this.results, m, n);
     },
-    range(start, end) {
-      return Array.from(new Array(end - start), (_, i) => i + start);
-    },
+    range,
   },
 };
 </script>
