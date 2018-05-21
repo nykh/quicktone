@@ -64,6 +64,7 @@ export default {
       }
       return s;
     },
+    range,
   },
 };
 </script>
