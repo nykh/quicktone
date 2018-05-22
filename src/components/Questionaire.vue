@@ -57,7 +57,7 @@ export default {
       years: 0,
       englishspeaker: true,
       language: '',
-      drawtone: true,
+      drawtone: false,
     };
   },
   methods: {

@@ -2,7 +2,7 @@
   <div id="app">
     <h2>Test {{test_id}}/{{numTests}}</h2>
     <p>Please listen to the audio below and draw the line representing
-      what you think the tone you heard is.</p>
+      what you think the tone you heard is by adjusting the dots.</p>
     <audio type="audio/mpeg" :src="sound_file" controls="controls">
       Your browser does not support the <code>audio</code> element.
     </audio>
