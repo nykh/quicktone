@@ -18,23 +18,7 @@ export default {
   data() {
     return {
       langs,
-      keyword: '',
     };
-  },
-  methods: {
-    autocomplete(event) {
-      const self = event.target;
-      const key = self.value;
-      const cands = langs.filter(ln =>
-        ln.slice(0, key.length).toLowerCase() === key.toLowerCase());
-      if (cands.length > 0) {
-        self.value = cands[0];
-      }
-    },
-    commit(event) {
-      this.keyword = event.target.value;
-      this.$emit('input', event.target.value);
-    },
   },
 };
 </script>
